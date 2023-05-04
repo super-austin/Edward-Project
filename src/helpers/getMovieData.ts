@@ -1,5 +1,5 @@
 //  Types & Interface
-import { IAPIResponse, IMovieData } from "@type/api.types";
+import { IAPIResponse } from '@type/api.types';
 
 export const getMovieData = async (
   page: number,
@@ -7,7 +7,7 @@ export const getMovieData = async (
 ): Promise<IAPIResponse> => {
   const apiRoute = `${process.env.BASE_URL}/movie?limit=36&page=${page}&name=/${nameKey}/i`;
   const headers = {
-    authorization: process.env.API_TOKEN || "",
+    authorization: process.env.API_TOKEN || ''
   };
   const response = await fetch(apiRoute, { headers });
   const result = await response.json();
@@ -18,7 +18,7 @@ export const getMovieData = async (
 export const getMovieWithId = async (id: string): Promise<IAPIResponse> => {
   const apiRoute = `${process.env.BASE_URL}/movie/${id}`;
   const headers = {
-    authorization: process.env.API_TOKEN || "",
+    authorization: process.env.API_TOKEN || ''
   };
   const response = await fetch(apiRoute, { headers });
   const result = await response.json();

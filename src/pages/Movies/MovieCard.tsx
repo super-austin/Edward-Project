@@ -1,8 +1,8 @@
 //  External Dependencies
-import Image from "next/image";
+import Image from 'next/image';
 
 //  Types
-import { IMovieData } from "@type/api.types";
+import { IMovieData } from '@type/api.types';
 
 interface IMovieCardProps {
   movie: IMovieData;
@@ -10,13 +10,15 @@ interface IMovieCardProps {
 }
 
 const MovieCard = ({ movie, selectItem }: IMovieCardProps) => {
-  if (!movie) return <></>;
+  if (!movie) {
+    return <></>;
+  }
   const {
     name,
     runtimeInMinutes,
     academyAwardNominations,
     academyAwardWins,
-    rottenTomatoesScore,
+    rottenTomatoesScore
   } = movie;
   return (
     <div
@@ -51,8 +53,8 @@ const MovieCard = ({ movie, selectItem }: IMovieCardProps) => {
                 height={22}
                 width={22}
                 priority
-              />{" "}
-              {academyAwardNominations}{" "}
+              />{' '}
+              {academyAwardNominations}{' '}
             </div>
             <div className="flex flex-row gap-1">
               <Image
@@ -61,7 +63,7 @@ const MovieCard = ({ movie, selectItem }: IMovieCardProps) => {
                 height={22}
                 width={22}
                 priority
-              />{" "}
+              />{' '}
               {academyAwardWins}
             </div>
           </td>

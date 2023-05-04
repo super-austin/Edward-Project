@@ -1,16 +1,16 @@
 //  External Dependencies
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 //  Internal Dependencies
-import Modal from "@components/Common/Modal";
-import MovieModalContent from "./MovieModalContent";
+import Modal from '@components/Common/Modal';
+import MovieModalContent from './MovieModalContent';
 
 //  Custom Hooks
-import useMovieWithId from "@hooks/useMovieWithId";
+import useMovieWithId from '@hooks/useMovieWithId';
 
 //  Types
-import { IMovieData } from "@type/api.types";
+import { IMovieData } from '@type/api.types';
 
 const MovieDetail = () => {
   const router = useRouter();
@@ -24,7 +24,9 @@ const MovieDetail = () => {
     }
   }, [isModalVisible]);
 
-  if (isError) return <h1>Oops! Error happened!</h1>;
+  if (isError) {
+    return <h1>Oops! Error happened!</h1>;
+  }
   return (
     <>
       {!isLoading && isModalVisible && response.docs?.[0] && (

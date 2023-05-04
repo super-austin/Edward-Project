@@ -1,21 +1,21 @@
 //  External Dependencies
-import { useEffect, useState } from "react";
-import { useDebounce } from "usehooks-ts";
-import ResponsivePagination from "react-responsive-pagination";
+import { useEffect, useState } from 'react';
+import { useDebounce } from 'usehooks-ts';
+import ResponsivePagination from 'react-responsive-pagination';
 
 //  Internal Dependencies
-import Modal from "@components/Common/Modal";
-import CharacterModalContent from "./CharacterModalContent";
-import CharacterCard from "./CharacterCard";
+import Modal from '@components/Common/Modal';
+import CharacterModalContent from './CharacterModalContent';
+import CharacterCard from './CharacterCard';
 
 //  Hooks
-import useCharacters from "@/hooks/useCharacters";
+import useCharacters from '@/hooks/useCharacters';
 
 //  Types
-import { ICharacterData } from "@type/api.types";
+import { ICharacterData } from '@type/api.types';
 
 const Characters = () => {
-  const [keyword, setKeyword] = useState<string>("");
+  const [keyword, setKeyword] = useState<string>('');
   const [selectedItem, setSelectedItem] = useState<ICharacterData>();
   const [isModalVisible, setModalVisible] = useState<boolean>(false);
   const [pageId, setPageId] = useState<number>(1);
@@ -27,7 +27,9 @@ const Characters = () => {
   );
 
   useEffect(() => {
-    if (response.pages && pageId > response.pages) setPageId(response.pages);
+    if (response.pages && pageId > response.pages) {
+      setPageId(response.pages);
+    }
   }, [response.pages]);
 
   const handleSelectMovie = (newData: ICharacterData) => {
@@ -36,8 +38,9 @@ const Characters = () => {
   };
 
   // If there are some errors, custom error page
-  if (isError) return <h1>Oops! Error happened!</h1>;
-  else
+  if (isError) {
+    return <h1>Oops! Error happened!</h1>;
+  } else {
     return (
       <>
         <main className="w-full flex justify-center overflow-y-auto">
@@ -55,7 +58,7 @@ const Characters = () => {
                 className="w-5/6 rounded-md border-none px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-700 sm:text-sm sm:leading-6 focus-visible:outline-none"
                 value={keyword}
                 placeholder="Movie Name here..."
-                onChange={(e) => setKeyword(e.target.value)}
+                onChange={e => setKeyword(e.target.value)}
                 autoFocus
               />
               {/* Character List */}
@@ -93,6 +96,7 @@ const Characters = () => {
         )}
       </>
     );
+  }
 };
 
 export default Characters;

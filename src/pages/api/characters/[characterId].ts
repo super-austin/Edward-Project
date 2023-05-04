@@ -1,11 +1,11 @@
 //  External Dependencies
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest, NextApiResponse } from 'next';
 
 //  Internal Dependencies
-import { getCharacterWithId } from "@/helpers/getCharacterData";
+import { getCharacterWithId } from '@/helpers/getCharacterData';
 
 //  Consts
-import { HTTP_STATUS_CODE, ERROR_MESSAGE } from "@consts/api.const";
+import { HTTP_STATUS_CODE, ERROR_MESSAGE } from '@consts/api.const';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { characterId } = req.query;
@@ -13,7 +13,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     switch (req.method) {
-      case "GET":
+      case 'GET': {
         const characterData = await getCharacterWithId(id);
         if (characterData.success === false) {
           return res
@@ -21,10 +21,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             .json(characterData?.message);
         }
         return res.status(HTTP_STATUS_CODE.Success).send(characterData);
-      default:
+      }
+      default: {
         return res
           .status(HTTP_STATUS_CODE.NotFound)
           .send(ERROR_MESSAGE.ApiNotFound);
+      }
     }
   } catch (error) {
     return res.status(HTTP_STATUS_CODE.ServerError).json(error);

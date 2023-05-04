@@ -1,15 +1,17 @@
 //  External Dependencies
-import Link from "next/link";
-import Dotdotdot from "react-dotdotdot";
+import Link from 'next/link';
+import Dotdotdot from 'react-dotdotdot';
 
 //  Types
-import { IQuoteData } from "@type/api.types";
+import { IQuoteData } from '@type/api.types';
 interface IQuoteItemProps {
   quote: IQuoteData;
 }
 
 const QuoteItem = ({ quote }: IQuoteItemProps) => {
-  if (!quote) return <></>;
+  if (!quote) {
+    return <></>;
+  }
   const { dialog, movie, character } = quote;
   return (
     <div className="w-full h-30 flex flex-row justify-between gap-3 py-4 px-5 rounded-lg border-2 border-gray-200 hover:border-slate-700 hover:bg-slate-100 select-none">

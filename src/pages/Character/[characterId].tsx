@@ -1,16 +1,16 @@
 //  External Dependencies
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 //  Internal Dependencies
-import Modal from "@components/Common/Modal";
-import CharacterModalContent from "./CharacterModalContent";
+import Modal from '@components/Common/Modal';
+import CharacterModalContent from './CharacterModalContent';
 
 //  Custom Hooks
-import useCharacterWithId from "@/hooks/useCharacterWithId";
+import useCharacterWithId from '@/hooks/useCharacterWithId';
 
 //  Types
-import { ICharacterData } from "@type/api.types";
+import { ICharacterData } from '@type/api.types';
 
 const CharacterDetail = () => {
   const router = useRouter();
@@ -26,7 +26,9 @@ const CharacterDetail = () => {
     }
   }, [isModalVisible]);
 
-  if (isError) return <h1>Oops! Error happened!</h1>;
+  if (isError) {
+    return <h1>Oops! Error happened!</h1>;
+  }
   return (
     <>
       {!isLoading && isModalVisible && response.docs?.[0] && (

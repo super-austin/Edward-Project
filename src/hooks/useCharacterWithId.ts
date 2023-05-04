@@ -1,9 +1,9 @@
 //  External Dependencies
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 //  Types & Consts
-import { IAPIResponse } from "@type/api.types";
-import { DEFAULT_API_RESPONSE } from "@consts/api.const";
+import { IAPIResponse } from '@type/api.types';
+import { DEFAULT_API_RESPONSE } from '@consts/api.const';
 interface IUseCharacterWithIdResponse {
   response: IAPIResponse;
   isLoading: boolean;
@@ -18,7 +18,7 @@ const useCharacterWithId = (
   const [isError, setError] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log("@hook", characterId);
+    console.log('@hook', characterId);
     if (!characterId) {
       setResponse(DEFAULT_API_RESPONSE);
       setLoading(true);

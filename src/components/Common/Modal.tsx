@@ -1,8 +1,8 @@
 //  External Depedencies
-import { FC, PropsWithChildren } from "react";
+import { FC, PropsWithChildren } from 'react';
 
 //  Icons
-import CloseIcon from "@images/close.svg";
+import CloseIcon from '@images/close.svg';
 
 //  Types & Interfaces
 interface IModal {

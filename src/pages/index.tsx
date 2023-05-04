@@ -1,11 +1,11 @@
 //  External Dependencies
-import Link from "next/link";
+import Link from 'next/link';
 
 const Landing = () => {
   const cardClassName =
-    "w-56 px-4 py-4 border-2 border-white hover:border-slate-800 hover:bg-slate-100 rounded-lg flex flex-col gap-4 select-none cursor-pointer transition-all";
+    'w-56 px-4 py-4 border-2 border-white hover:border-slate-800 hover:bg-slate-100 rounded-lg flex flex-col gap-4 select-none cursor-pointer transition-all';
   const cardTitle =
-    "text-lg text-slate-900 font-bold underline underline-offset-4";
+    'text-lg text-slate-900 font-bold underline underline-offset-4';
   return (
     <main className="w-full flex justify-center">
       <div className="container h-full pt-10 sm:pt-40 pb-40 px-10 flex flex-col justify-between items-center gap-10">

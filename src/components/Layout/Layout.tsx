@@ -1,9 +1,9 @@
 //  External Dependencies
-import Head from "next/head";
-import { FC, PropsWithChildren } from "react";
+import Head from 'next/head';
+import { FC, PropsWithChildren } from 'react';
 
 //  Internal Dependencies
-import Header from "./Header";
+import Header from './Header';
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (

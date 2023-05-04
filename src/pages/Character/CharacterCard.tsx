@@ -1,11 +1,11 @@
 //  External Dependencies
-import Link from "next/link";
+import Link from 'next/link';
 
 //  Internal Dependencies
-import { normalizeInfo } from "@utils/normalizeInfo";
+import { normalizeInfo } from '@utils/normalizeInfo';
 
 //  Types
-import { ICharacterData } from "@type/api.types";
+import { ICharacterData } from '@type/api.types';
 
 interface ICharacterCardProps {
   character: ICharacterData;
@@ -13,7 +13,9 @@ interface ICharacterCardProps {
 }
 
 const CharacterCard = ({ character, selectItem }: ICharacterCardProps) => {
-  if (!character) return <></>;
+  if (!character) {
+    return <></>;
+  }
   const { name, race, gender, wikiUrl } = character;
   return (
     <div
@@ -41,7 +43,7 @@ const CharacterCard = ({ character, selectItem }: ICharacterCardProps) => {
         {wikiUrl && (
           <tr>
             <th className="text-left text-blue-500">
-              <Link href={normalizeInfo(wikiUrl, "")}>Wiki Info</Link>
+              <Link href={normalizeInfo(wikiUrl, '')}>Wiki Info</Link>
             </th>
           </tr>
         )}

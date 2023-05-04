@@ -1,16 +1,18 @@
 //  Internal Dependencies
-import { normalizeInfo } from "@utils/normalizeInfo";
+import { normalizeInfo } from '@utils/normalizeInfo';
 
 //  Types
-import { ICharacterData } from "@type/api.types";
-import Link from "next/link";
+import { ICharacterData } from '@type/api.types';
+import Link from 'next/link';
 
 interface ICharacterModalContentProps {
   character: ICharacterData;
 }
 
 const CharacterModalContent = ({ character }: ICharacterModalContentProps) => {
-  if (!character) return <></>;
+  if (!character) {
+    return <></>;
+  }
   const {
     race,
     gender,
@@ -21,14 +23,14 @@ const CharacterModalContent = ({ character }: ICharacterModalContentProps) => {
     hair,
     name,
     wikiUrl,
-    height,
+    height
   } = character;
   return (
     <div className="flex flex-col min-w-[250px] sm:min-w-[300px] justify-center gap-2 pb-4 px-5 select-none">
       {/* Character Name: if this character has wiki url then click name to redirect to wiki page */}
       <h1
         className={`text-lg font-bold px-5 w-full text-center ${
-          wikiUrl ? "text-blue-500" : ""
+          wikiUrl ? 'text-blue-500' : ''
         }`}
       >
         {wikiUrl ? <Link href={wikiUrl}>{name}</Link> : <>{name}</>}

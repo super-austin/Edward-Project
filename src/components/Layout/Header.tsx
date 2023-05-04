@@ -1,7 +1,7 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 const Header = () => {
-  const navClassname = "select-none cursor-pointer hover:text-slate-400";
+  const navClassname = 'select-none cursor-pointer hover:text-slate-400';
 
   return (
     <div className="w-full h-20 px-5 py-3 flex flex-row justify-between items-center bg-slate-950">

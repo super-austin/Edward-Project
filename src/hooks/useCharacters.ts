@@ -1,9 +1,9 @@
 //  External Dependencies
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 //  Types & Consts
-import { IAPIResponse } from "@type/api.types";
-import { DEFAULT_API_RESPONSE } from "@consts/api.const";
+import { IAPIResponse } from '@type/api.types';
+import { DEFAULT_API_RESPONSE } from '@consts/api.const';
 interface IUseCharactersResponse {
   response: IAPIResponse;
   isLoading: boolean;

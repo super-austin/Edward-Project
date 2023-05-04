@@ -1,15 +1,17 @@
 //  External Dependencies
-import Image from "next/image";
+import Image from 'next/image';
 
 //  Types
-import { IMovieData } from "@type/api.types";
+import { IMovieData } from '@type/api.types';
 
 interface IMovieModalContentProps {
   movie: IMovieData;
 }
 
 const MovieModalContent = ({ movie }: IMovieModalContentProps) => {
-  if (!movie) return <></>;
+  if (!movie) {
+    return <></>;
+  }
   const {
     name,
     runtimeInMinutes,
@@ -17,7 +19,7 @@ const MovieModalContent = ({ movie }: IMovieModalContentProps) => {
     boxOfficeRevenueInMillions,
     academyAwardNominations,
     academyAwardWins,
-    rottenTomatoesScore,
+    rottenTomatoesScore
   } = movie;
   return (
     <div className="flex flex-col justify-center gap-2 pb-4 px-5 select-none">
@@ -46,7 +48,7 @@ const MovieModalContent = ({ movie }: IMovieModalContentProps) => {
                 height={22}
                 width={22}
                 priority
-              />{" "}
+              />{' '}
               {academyAwardNominations}
             </div>
             <div className="flex flex-row gap-1">
@@ -56,7 +58,7 @@ const MovieModalContent = ({ movie }: IMovieModalContentProps) => {
                 height={22}
                 width={22}
                 priority
-              />{" "}
+              />{' '}
               {academyAwardWins}
             </div>
           </div>
