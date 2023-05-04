@@ -40,4 +40,6 @@ export interface IAPIResponse {
   offset: number;
   page: number;
   pages: number;
+  success?: boolean;
+  message?: string;
 }

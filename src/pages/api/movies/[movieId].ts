@@ -2,26 +2,25 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 //  Internal Dependencies
-import getCharacterData from "@/helpers/getCharacterData";
+import { getMovieWithId } from "@helpers/getMovieData";
 
 //  Consts
 import { HTTP_STATUS_CODE, ERROR_MESSAGE } from "@consts/api.const";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const { page, keyword } = req.query;
-  const pageId = (page as string) ? Number(page) : 1;
-  const nameKeyword = (keyword as string) || "";
+  const { movieId } = req.query;
+  const id = movieId as string;
 
   try {
     switch (req.method) {
       case "GET":
-        const characterData = await getCharacterData(pageId, nameKeyword);
-        if (characterData.success === false) {
+        const moviesData = await getMovieWithId(id);
+        if (moviesData.success === false) {
           return res
             .status(HTTP_STATUS_CODE.ServerError)
-            .json(characterData?.message);
+            .json(moviesData?.message);
         }
-        return res.status(HTTP_STATUS_CODE.Success).send(characterData);
+        return res.status(HTTP_STATUS_CODE.Success).send(moviesData);
       default:
         return res
           .status(HTTP_STATUS_CODE.NotFound)

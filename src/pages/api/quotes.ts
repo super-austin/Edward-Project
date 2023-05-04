@@ -16,6 +16,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     switch (req.method) {
       case "GET":
         const quotesData = await getQuotesData(pageId, nameKeyword);
+        if (quotesData.success === false) {
+          return res
+            .status(HTTP_STATUS_CODE.ServerError)
+            .json(quotesData?.message);
+        }
         return res.status(HTTP_STATUS_CODE.Success).send(quotesData);
       default:
         return res

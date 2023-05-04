@@ -21,7 +21,7 @@ const QuoteItem = ({ quote }: IQuoteItemProps) => {
       <div className="w-full px-5 flex flex-col md:flex-row items-end md:justify-end gap-3">
         <Link
           className="font-bold text-sm md:text-base text-blue-500"
-          href="/Movies"
+          href={`/Movies/${movie}`}
         >
           Movie Info
         </Link>
