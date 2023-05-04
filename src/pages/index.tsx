@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Landing = () => {
   const cardClassName =
-    "w-56 px-4 py-4 border-2 border-white hover:border-slate-800 rounded-lg flex flex-col gap-4 select-none cursor-pointer transition-all";
+    "w-56 px-4 py-4 border-2 border-white hover:border-slate-800 hover:bg-slate-100 rounded-lg flex flex-col gap-4 select-none cursor-pointer transition-all";
   const cardTitle =
     "text-lg text-slate-900 font-bold underline underline-offset-4";
   return (
