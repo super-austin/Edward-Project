@@ -1,5 +1,6 @@
 //  External Dependencies
 import { useState } from "react";
+import { useDebounce } from "usehooks-ts";
 
 //  Internal Dependencies
 import Modal from "@components/Common/Modal";
@@ -13,11 +14,11 @@ import { IMovieData } from "@type/api.types";
 import MovieCart from "./MovieCard";
 
 const Movies = () => {
-  const [pageId, setPageId] = useState<number>(1);
   const [keyword, setKeyword] = useState<string>("");
   const [selectedItem, setSelectedItem] = useState<IMovieData>();
   const [isModalVisible, setModalVisible] = useState<boolean>(false);
-  const { response, isError } = useMovie("", pageId, keyword);
+  const debouncedKeyword = useDebounce<string>(keyword, 300);
+  const { response, isError } = useMovie("", 1, debouncedKeyword);
 
   const handleSelectMovie = (newData: IMovieData) => {
     setSelectedItem(newData);
