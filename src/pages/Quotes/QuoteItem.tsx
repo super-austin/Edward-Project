@@ -27,7 +27,7 @@ const QuoteItem = ({ quote }: IQuoteItemProps) => {
         </Link>
         <Link
           className="font-bold text-sm md:text-base text-blue-500"
-          href="/Character"
+          href={`/Character/${character}`}
         >
           Character Info
         </Link>

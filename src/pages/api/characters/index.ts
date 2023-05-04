@@ -2,7 +2,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 //  Internal Dependencies
-import getCharacterData from "@/helpers/getCharacterData";
+import { getCharacterData } from "@/helpers/getCharacterData";
 
 //  Consts
 import { HTTP_STATUS_CODE, ERROR_MESSAGE } from "@consts/api.const";
