@@ -13,6 +13,7 @@ interface ICharacterCardProps {
 }
 
 const CharacterCard = ({ character, selectItem }: ICharacterCardProps) => {
+  if (!character) return <></>;
   const { name, race, gender, wikiUrl } = character;
   return (
     <div

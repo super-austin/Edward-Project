@@ -9,6 +9,7 @@ interface IQuoteItemProps {
 }
 
 const QuoteItem = ({ quote }: IQuoteItemProps) => {
+  if (!quote) return <></>;
   const { dialog, movie, character } = quote;
   return (
     <div className="w-full h-30 flex flex-row justify-between gap-3 py-4 px-5 rounded-lg border-2 border-gray-200 hover:border-slate-700 hover:bg-slate-100 select-none">

@@ -10,6 +10,7 @@ interface IMovieCardProps {
 }
 
 const MovieCard = ({ movie, selectItem }: IMovieCardProps) => {
+  if (!movie) return <></>;
   const {
     name,
     runtimeInMinutes,

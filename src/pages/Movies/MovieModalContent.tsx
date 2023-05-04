@@ -9,6 +9,7 @@ interface IMovieModalContentProps {
 }
 
 const MovieModalContent = ({ movie }: IMovieModalContentProps) => {
+  if (!movie) return <></>;
   const {
     name,
     runtimeInMinutes,

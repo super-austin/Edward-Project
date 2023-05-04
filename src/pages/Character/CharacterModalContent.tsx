@@ -10,6 +10,7 @@ interface ICharacterModalContentProps {
 }
 
 const CharacterModalContent = ({ character }: ICharacterModalContentProps) => {
+  if (!character) return <></>;
   const {
     race,
     gender,
