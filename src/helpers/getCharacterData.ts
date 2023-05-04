@@ -1,12 +1,12 @@
 //  Types & Interface
 import { IAPIResponse } from "@type/api.types";
 
-const getMovieData = async (
+const getCharacterData = async (
   search: string,
   page: number,
   nameKey: string
 ): Promise<IAPIResponse> => {
-  const apiRoute = `${process.env.BASE_URL}/movie/${
+  const apiRoute = `${process.env.BASE_URL}/character/${
     search || ""
   }?limit=36&page=${page}&name=/${nameKey}/i`;
   const headers = {
@@ -18,4 +18,4 @@ const getMovieData = async (
   return result;
 };
 
-export default getMovieData;
+export default getCharacterData;

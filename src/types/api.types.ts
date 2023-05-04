@@ -11,8 +11,22 @@ export interface IMovieData {
   rottenTomatoesScore: number;
 }
 
+export interface ICharacterData {
+  _id: string;
+  height: string;
+  race: string;
+  gender: string;
+  birth: string;
+  spouse: string;
+  death: string;
+  realm: string;
+  hair: string;
+  name: string;
+  wikiUrl: string;
+}
+
 export interface IAPIResponse {
-  docs: IMovieData[];
+  docs: IMovieData[] | ICharacterData[];
   total: number;
   limit: number;
   offset: number;

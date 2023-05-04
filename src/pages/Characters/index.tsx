@@ -1,26 +1,37 @@
 //  External Dependencies
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDebounce } from "usehooks-ts";
+import ResponsivePagination from "react-responsive-pagination";
 
 //  Internal Dependencies
 import Modal from "@components/Common/Modal";
-import MovieModalContent from "./MovieModalContent";
-import MovieCart from "./MovieCard";
+import CharacterModalContent from "./CharacterModalContent";
+import CharacterCard from "./CharacterCard";
 
 //  Hooks
-import useMovie from "@hooks/useMovie";
+import useCharacters from "@/hooks/useCharacters";
 
 //  Types
-import { IMovieData } from "@type/api.types";
+import { ICharacterData } from "@type/api.types";
 
-const Movies = () => {
+const Characters = () => {
   const [keyword, setKeyword] = useState<string>("");
-  const [selectedItem, setSelectedItem] = useState<IMovieData>();
+  const [selectedItem, setSelectedItem] = useState<ICharacterData>();
   const [isModalVisible, setModalVisible] = useState<boolean>(false);
+  const [pageId, setPageId] = useState<number>(1);
   const debouncedKeyword = useDebounce<string>(keyword, 300);
-  const { response, isError } = useMovie("", 1, debouncedKeyword);
+  const debouncedPageId = useDebounce<number>(pageId, 100);
+  const { response, isError } = useCharacters(
+    "",
+    debouncedPageId,
+    debouncedKeyword
+  );
 
-  const handleSelectMovie = (newData: IMovieData) => {
+  useEffect(() => {
+    if (response.pages && pageId > response.pages) setPageId(response.pages);
+  }, [response.pages]);
+
+  const handleSelectMovie = (newData: ICharacterData) => {
     setSelectedItem(newData);
     setModalVisible(true);
   };
@@ -34,7 +45,7 @@ const Movies = () => {
           <div className="container h-full pt-20 pb-40 px-10 flex flex-col items-center gap-20">
             {/* Title */}
             <h1 className="text-2xl sm:text-6xl underline underline-offset-8">
-              &nbsp;&nbsp;Movies&nbsp;&nbsp;
+              &nbsp;&nbsp;Characters&nbsp;&nbsp;
             </h1>
 
             {/* Content */}
@@ -50,14 +61,27 @@ const Movies = () => {
               />
               {/* Movie List */}
               <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 place-content-between place-items-center gap-5">
-                {(response.docs as IMovieData[]).map((item: IMovieData) => (
-                  <MovieCart
-                    key={item._id}
-                    movie={item}
-                    selectItem={handleSelectMovie}
-                  />
-                ))}
+                {(response.docs as ICharacterData[]).map(
+                  (item: ICharacterData) => (
+                    <CharacterCard
+                      key={item._id}
+                      character={item}
+                      selectItem={handleSelectMovie}
+                    />
+                  )
+                )}
               </div>
+
+              {/* Pagination Component */}
+              {response.pages > 1 && (
+                <div className="w-1/3">
+                  <ResponsivePagination
+                    current={pageId}
+                    total={response.pages}
+                    onPageChange={setPageId}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </main>
@@ -65,11 +89,11 @@ const Movies = () => {
         {/* Detail Modal */}
         {selectedItem && isModalVisible && (
           <Modal setOpenModal={setModalVisible}>
-            <MovieModalContent movie={selectedItem} />
+            <CharacterModalContent character={selectedItem} />
           </Modal>
         )}
       </>
     );
 };
 
-export default Movies;
+export default Characters;

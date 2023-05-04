@@ -20,17 +20,21 @@ const MovieModalContent = ({ movie }: IMovieModalContentProps) => {
   } = movie;
   return (
     <div className="flex flex-col justify-center gap-2 pb-4 px-5 select-none">
+      {/* Movie Name */}
       <h1 className="text-lg font-bold px-5 w-full text-center">{name}</h1>
       <hr className="w-full border-t-2 border-gray-900" />
       <div className="w-full flex flex-col gap-3 mt-2">
+        {/* Movie Runtime */}
         <div className="w-full flex flex-row">
           <div className="w-1/3 font-bold">Runtime:</div>
           <div>{runtimeInMinutes} mins</div>
         </div>
+        {/* Movie Score */}
         <div className="w-full flex flex-row">
           <div className="w-1/3 font-bold">Score:</div>
           <div>{rottenTomatoesScore.toFixed(2)}</div>
         </div>
+        {/* Movie Awards Info */}
         <div className="w-full flex flex-row">
           <div className="w-1/3 font-bold">Awards:</div>
           <div className="flex flex-row gap-3">
@@ -56,10 +60,12 @@ const MovieModalContent = ({ movie }: IMovieModalContentProps) => {
             </div>
           </div>
         </div>
+        {/* Movie Budget */}
         <div className="w-full flex flex-row">
           <div className="w-1/3 font-bold">Budget:</div>
           <div>{budgetInMillions} M</div>
         </div>
+        {/* Movie Revenue */}
         <div className="w-full flex flex-row">
           <div className="w-1/3 font-bold">Revenue:</div>
           <div>{boxOfficeRevenueInMillions} M</div>

@@ -29,7 +29,7 @@ const Modal: FC<IModal & PropsWithChildren> = ({ setOpenModal, children }) => {
               />
             </div>
             {/* Modal Content */}
-            <div className="sm:flex">{children}</div>
+            <div className="w-full sm:flex">{children}</div>
           </div>
         </div>
       </div>
