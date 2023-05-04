@@ -25,8 +25,16 @@ export interface ICharacterData {
   wikiUrl: string;
 }
 
+export interface IQuoteData {
+  _id: string;
+  dialog: string;
+  movie: string;
+  character: string;
+  id: string;
+}
+
 export interface IAPIResponse {
-  docs: IMovieData[] | ICharacterData[];
+  docs: IMovieData[] | ICharacterData[] | IQuoteData[];
   total: number;
   limit: number;
   offset: number;

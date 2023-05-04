@@ -1,29 +1,26 @@
 //  External Dependencies
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDebounce } from "usehooks-ts";
 
 //  Internal Dependencies
-import Modal from "@components/Common/Modal";
-import MovieModalContent from "./MovieModalContent";
-import MovieCart from "./MovieCard";
+import QuoteItem from "./QuoteItem";
 
 //  Hooks
-import useMovie from "@hooks/useMovie";
+import useQuotes from "@/hooks/useQuotes";
 
 //  Types
-import { IMovieData } from "@type/api.types";
+import { IQuoteData } from "@type/api.types";
 
-const Movies = () => {
+const Quotes = () => {
+  const [pageId, setPageId] = useState<number>(1);
   const [keyword, setKeyword] = useState<string>("");
-  const [selectedItem, setSelectedItem] = useState<IMovieData>();
-  const [isModalVisible, setModalVisible] = useState<boolean>(false);
+  const debouncedPageId = useDebounce(pageId, 100);
   const debouncedKeyword = useDebounce<string>(keyword, 300);
-  const { response, isError } = useMovie(1, debouncedKeyword);
+  const { response, isError } = useQuotes(debouncedPageId, debouncedKeyword);
 
-  const handleSelectMovie = (newData: IMovieData) => {
-    setSelectedItem(newData);
-    setModalVisible(true);
-  };
+  useEffect(() => {
+    if (response.pages && pageId > response.pages) setPageId(response.pages);
+  }, [response.pages]);
 
   // If there are some errors, custom error page
   if (isError) return <h1>Oops! Error happened!</h1>;
@@ -34,7 +31,7 @@ const Movies = () => {
           <div className="container h-full pt-20 pb-40 px-10 flex flex-col items-center gap-20">
             {/* Title */}
             <h1 className="text-2xl sm:text-6xl underline underline-offset-8">
-              &nbsp;&nbsp;Movies&nbsp;&nbsp;
+              &nbsp;&nbsp;Quotes&nbsp;&nbsp;
             </h1>
 
             {/* Content */}
@@ -50,26 +47,15 @@ const Movies = () => {
               />
               {/* Movie List */}
               <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 place-content-between place-items-center gap-5">
-                {(response.docs as IMovieData[]).map((item: IMovieData) => (
-                  <MovieCart
-                    key={item._id}
-                    movie={item}
-                    selectItem={handleSelectMovie}
-                  />
+                {(response.docs as IQuoteData[]).map((item: IQuoteData) => (
+                  <QuoteItem key={item._id} quote={item} />
                 ))}
               </div>
             </div>
           </div>
         </main>
-
-        {/* Detail Modal */}
-        {selectedItem && isModalVisible && (
-          <Modal setOpenModal={setModalVisible}>
-            <MovieModalContent movie={selectedItem} />
-          </Modal>
-        )}
       </>
     );
 };
 
-export default Movies;
+export default Quotes;

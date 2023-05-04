@@ -2,7 +2,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 //  Internal Dependencies
-import getCharacterData from "@/helpers/getCharacterData";
+import getQuotesData from "@/helpers/getQuotesData";
 
 //  Consts
 import { HTTP_STATUS_CODE, ERROR_MESSAGE } from "@consts/api.const";
@@ -15,8 +15,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     switch (req.method) {
       case "GET":
-        const characterData = await getCharacterData(pageId, nameKeyword);
-        return res.status(HTTP_STATUS_CODE.Success).send(characterData);
+        const quotesData = await getQuotesData(pageId, nameKeyword);
+        return res.status(HTTP_STATUS_CODE.Success).send(quotesData);
       default:
         return res
           .status(HTTP_STATUS_CODE.NotFound)

@@ -1,11 +1,11 @@
 //  Types & Interface
 import { IAPIResponse } from "@type/api.types";
 
-const getCharacterData = async (
+const getQuotesData = async (
   page: number,
   nameKey: string
 ): Promise<IAPIResponse> => {
-  const apiRoute = `${process.env.BASE_URL}/character?limit=36&page=${page}&name=/${nameKey}/i`;
+  const apiRoute = `${process.env.BASE_URL}/quote?limit=50&page=${page}&dialog=/${nameKey}/i`;
   const headers = {
     authorization: process.env.API_TOKEN || "",
   };
@@ -15,4 +15,4 @@ const getCharacterData = async (
   return result;
 };
 
-export default getCharacterData;
+export default getQuotesData;

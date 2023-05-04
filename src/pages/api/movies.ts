@@ -8,15 +8,14 @@ import getMovieData from "@helpers/getMovieData";
 import { HTTP_STATUS_CODE, ERROR_MESSAGE } from "@consts/api.const";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const { id, page, keyword } = req.query;
-  const movieId = (id as string) || "";
+  const { page, keyword } = req.query;
   const pageId = (page as string) ? Number(page) : 1;
   const nameKeyword = (keyword as string) || "";
 
   try {
     switch (req.method) {
       case "GET":
-        const moviesData = await getMovieData(movieId, pageId, nameKeyword);
+        const moviesData = await getMovieData(pageId, nameKeyword);
         return res.status(HTTP_STATUS_CODE.Success).send(moviesData);
       default:
         return res

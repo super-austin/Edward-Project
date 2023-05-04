@@ -22,7 +22,6 @@ const Characters = () => {
   const debouncedKeyword = useDebounce<string>(keyword, 300);
   const debouncedPageId = useDebounce<number>(pageId, 100);
   const { response, isError } = useCharacters(
-    "",
     debouncedPageId,
     debouncedKeyword
   );
@@ -59,7 +58,7 @@ const Characters = () => {
                 onChange={(e) => setKeyword(e.target.value)}
                 autoFocus
               />
-              {/* Movie List */}
+              {/* Character List */}
               <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 place-content-between place-items-center gap-5">
                 {(response.docs as ICharacterData[]).map(
                   (item: ICharacterData) => (

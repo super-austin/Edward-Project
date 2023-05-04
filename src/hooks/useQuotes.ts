@@ -4,26 +4,23 @@ import { useState, useEffect } from "react";
 //  Types & Consts
 import { IAPIResponse } from "@type/api.types";
 import { DEFAULT_API_RESPONSE } from "@consts/api.const";
-interface IUseCharactersResponse {
+interface IUseQuotesResponse {
   response: IAPIResponse;
   isLoading: boolean;
   isError: boolean;
 }
 
-const useCharacters = (
-  page: number,
-  keyword: string
-): IUseCharactersResponse => {
+const useQuotes = (page: number, keyword: string): IUseQuotesResponse => {
   const [response, setResponse] = useState<IAPIResponse>(DEFAULT_API_RESPONSE);
   const [isLoading, setLoading] = useState<boolean>(false);
   const [isError, setError] = useState<boolean>(false);
 
   useEffect(() => {
-    const fetchCharacterData = async (page: number, keyword: string) => {
+    const fetchQuotesData = async (page: number, keyword: string) => {
       setLoading(true);
       try {
         const response = await fetch(
-          `/api/characters?page=${page}&keyword=${keyword}`
+          `/api/quotes?page=${page}&keyword=${keyword}`
         );
         const data = await response.json();
         setResponse(data);
@@ -35,10 +32,10 @@ const useCharacters = (
       }
     };
 
-    fetchCharacterData(page, keyword);
+    fetchQuotesData(page, keyword);
   }, [page, keyword]);
 
   return { response, isLoading, isError };
 };
 
-export default useCharacters;
+export default useQuotes;

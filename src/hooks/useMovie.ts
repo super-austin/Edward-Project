@@ -10,21 +10,17 @@ interface IUseMovieResponse {
   isError: boolean;
 }
 
-const useMovie = (
-  query: string,
-  page: number,
-  keyword: string
-): IUseMovieResponse => {
+const useMovie = (page: number, keyword: string): IUseMovieResponse => {
   const [response, setResponse] = useState<IAPIResponse>(DEFAULT_API_RESPONSE);
   const [isLoading, setLoading] = useState<boolean>(false);
   const [isError, setError] = useState<boolean>(false);
 
   useEffect(() => {
-    const fetchMovieData = async (query: string, page: number) => {
+    const fetchMovieData = async (page: number, keyword: string) => {
       setLoading(true);
       try {
         const response = await fetch(
-          `/api/movies?id=${query}&page=${page}&keyword=${keyword}`
+          `/api/movies?page=${page}&keyword=${keyword}`
         );
         const data = await response.json();
         setResponse(data);
@@ -36,8 +32,8 @@ const useMovie = (
       }
     };
 
-    fetchMovieData(query, page);
-  }, [query, page, keyword]);
+    fetchMovieData(page, keyword);
+  }, [page, keyword]);
 
   return { response, isLoading, isError };
 };

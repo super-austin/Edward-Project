@@ -2,13 +2,10 @@
 import { IAPIResponse } from "@type/api.types";
 
 const getMovieData = async (
-  search: string,
   page: number,
   nameKey: string
 ): Promise<IAPIResponse> => {
-  const apiRoute = `${process.env.BASE_URL}/movie/${
-    search || ""
-  }?limit=36&page=${page}&name=/${nameKey}/i`;
+  const apiRoute = `${process.env.BASE_URL}/movie?limit=36&page=${page}&name=/${nameKey}/i`;
   const headers = {
     authorization: process.env.API_TOKEN || "",
   };
