@@ -1,6 +1,7 @@
 //  External Dependencies
 import { useEffect, useState } from "react";
 import { useDebounce } from "usehooks-ts";
+import ResponsivePagination from "react-responsive-pagination";
 
 //  Internal Dependencies
 import QuoteItem from "./QuoteItem";
@@ -39,18 +40,29 @@ const Quotes = () => {
               {/* Search Bar */}
               <input
                 type="text"
-                className="w-5/6 rounded-md border-none px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-700 sm:text-sm sm:leading-6 focus-visible:outline-none"
+                className="w-full md:w-5/6 rounded-md border-none px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-700 sm:text-sm sm:leading-6 focus-visible:outline-none"
                 value={keyword}
                 placeholder="Movie Name here..."
                 onChange={(e) => setKeyword(e.target.value)}
                 autoFocus
               />
               {/* Movie List */}
-              <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 place-content-between place-items-center gap-5">
+              <div className="w-full md:w-5/6 flex flex-col gap-1 place-content-between place-items-center">
                 {(response.docs as IQuoteData[]).map((item: IQuoteData) => (
                   <QuoteItem key={item._id} quote={item} />
                 ))}
               </div>
+
+              {/* Pagination Component */}
+              {response.pages > 1 && (
+                <div className="w-1/3">
+                  <ResponsivePagination
+                    current={pageId}
+                    total={response.pages}
+                    onPageChange={setPageId}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </main>
