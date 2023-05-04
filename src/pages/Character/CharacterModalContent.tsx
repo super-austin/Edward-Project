@@ -1,8 +1,5 @@
-//  External Dependencies
-import Image from "next/image";
-
 //  Internal Dependencies
-import { normalizeInfo } from "./normalizeInfo";
+import { normalizeInfo } from "@utils/normalizeInfo";
 
 //  Types
 import { ICharacterData } from "@type/api.types";

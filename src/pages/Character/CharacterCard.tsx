@@ -2,7 +2,7 @@
 import Link from "next/link";
 
 //  Internal Dependencies
-import { normalizeInfo } from "./normalizeInfo";
+import { normalizeInfo } from "@utils/normalizeInfo";
 
 //  Types
 import { ICharacterData } from "@type/api.types";
