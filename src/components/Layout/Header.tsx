@@ -5,7 +5,7 @@ const Header = () => {
 
   return (
     <div className="w-full h-20 px-5 py-3 flex flex-row justify-between items-center bg-slate-950">
-      <Link href="https://the-one-api.dev/">
+      <Link href="/">
         <h1 className="text-white text-xl sm:text-4xl font-bold select-none cursor-pointer">
           Lord Of King
         </h1>
