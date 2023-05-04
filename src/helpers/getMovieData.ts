@@ -1,5 +1,5 @@
 //  Types & Interface
-import { ApiQuery, IAPIResponse } from "@type/api.types";
+import { IAPIResponse } from "@type/api.types";
 
 const getMovieData = async (
   search: string,

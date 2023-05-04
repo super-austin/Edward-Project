@@ -4,12 +4,12 @@ import Image from "next/image";
 //  Types
 import { IMovieData } from "@type/api.types";
 
-interface IMovieCartProps {
+interface IMovieCardProps {
   movie: IMovieData;
   selectItem: (newItem: IMovieData) => void;
 }
 
-const MovieCart = ({ movie, selectItem }: IMovieCartProps) => {
+const MovieCard = ({ movie, selectItem }: IMovieCardProps) => {
   const {
     name,
     runtimeInMinutes,
@@ -24,17 +24,22 @@ const MovieCart = ({ movie, selectItem }: IMovieCartProps) => {
         selectItem(movie);
       }}
     >
+      {/* Title */}
       <h1 className="text-lg font-bold w-full text-center">{name}</h1>
       <hr className="w-full border-t-2 border-gray-900" />
+      {/* Content */}
       <table className="w-full table-fixed mt-2">
+        {/* Playtime */}
         <tr>
           <th className="text-left">PlayTime:</th>
           <td>{runtimeInMinutes} mins</td>
         </tr>
+        {/* Score */}
         <tr>
           <th className="text-left">Score:</th>
           <td>{rottenTomatoesScore.toFixed(2)}</td>
         </tr>
+        {/* Award Info */}
         <tr>
           <th className="text-left">Award:</th>
           <td className="flex flex-row gap-3">
@@ -65,4 +70,4 @@ const MovieCart = ({ movie, selectItem }: IMovieCartProps) => {
   );
 };
 
-export default MovieCart;
+export default MovieCard;
